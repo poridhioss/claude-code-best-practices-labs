@@ -21,8 +21,4 @@ git clone https://github.com/poridhioss/claude-code-best-practices-starter.git
 | [Lab 3](lab_3/readme.md) | Hooks & SDK | Hook events, defining and implementing hooks, decision control, headless mode, CI/CD |
 | [Lab 4](lab_4/readme.md) | Agents & Skills | Skills, agent isolation, frontmatter configuration, orchestration patterns |
 
-## Prerequisites
 
-- A terminal (macOS, Linux, or Windows WSL)
-- Node.js installed
-- A Claude account (Pro, Team, or Enterprise)
