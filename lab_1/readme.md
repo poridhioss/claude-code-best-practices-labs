@@ -10,7 +10,7 @@ A coding assistant is more than a tool that writes code. It's a system that uses
 When you give a coding assistant a task like "fix this bug based on the error message," it follows a process similar to how a human developer works:
 
 <!-- Diagram: The assistant architecture — Task on the left (error message), flows into the Assistant box containing Language Model + Set of Tools, with a loop of Gather Context → Formulate a Plan → Take Action → Iterate. Similar to Anthropic's diagram. -->
-![The coding assistant process](./images/architecture.png)
+![The coding assistant process](https://raw.githubusercontent.com/poridhiEng/lab-asset/refs/heads/main/Agentic%20Engineering/Claude%20Code%20Best%20Practices/lab_1/images/architecture.png)
 
 1. **Gather context** — understand the error, find which files are affected, read relevant code
 2. **Formulate a plan** — decide how to fix it (change this function, update that import, add a test)
@@ -27,7 +27,7 @@ So how does a coding assistant actually read files and run commands?
 It uses a system called **tool use**. When you send a request, the coding assistant wraps your message with instructions that teach the model how to request actions.
 
 <!-- Diagram: Tool use sequence diagram — Coding Assistant on the left, Language Model on the right, with arrows showing: (1) "What code is in main.go?" + tool instructions → Model, (2) Model responds "ReadFile: main.go" ←, (3) Assistant reads file, sends contents → Model, (4) Model provides final answer ←. Similar to Anthropic's sequence diagram. -->
-![How tool use works](./images/tool.png)
+![How tool use works](https://raw.githubusercontent.com/poridhiEng/lab-asset/refs/heads/main/Agentic%20Engineering/Claude%20Code%20Best%20Practices/lab_1/images/tool.png)
 
 Here's the complete flow:
 
@@ -59,11 +59,11 @@ claude
 ```
 > Choose you preferred theme.
 
-![](./images/1.png)
+![](https://raw.githubusercontent.com/poridhiEng/lab-asset/refs/heads/main/Agentic%20Engineering/Claude%20Code%20Best%20Practices/lab_1/images/1.png)
 
 > Yes, I trust this folder
 
-![](./images/2.png)
+![](https://raw.githubusercontent.com/poridhiEng/lab-asset/refs/heads/main/Agentic%20Engineering/Claude%20Code%20Best%20Practices/lab_1/images/2.png)
 
 Ask Claude:
 
@@ -74,7 +74,7 @@ Ask Claude:
 Watch the terminal — you'll see Claude make a **Read** tool call, receive the file contents, and then answer based on what it read. The model didn't already know what's in that file. It requested the action, the CLI executed it, and the contents came back.
 
 <!-- Poridhi screenshot: Claude reading README.md — showing the Read tool call and response -->
-![Claude reading README.md](./images/3.png)
+![Claude reading README.md](https://raw.githubusercontent.com/poridhiEng/lab-asset/refs/heads/main/Agentic%20Engineering/Claude%20Code%20Best%20Practices/lab_1/images/3.png)
 
 Now ask something that requires multiple tools:
 
@@ -85,7 +85,7 @@ Now ask something that requires multiple tools:
 This time Claude will use Glob (to find files), then Read (to examine the route and utility files), then cross-reference them. Multiple tools, chained together from a single prompt.
 
 <!-- Poridhi screenshot: Claude using Glob then Read to find and examine weather.js and formatter.js -->
-![Claude chaining multiple tools](./images/4.png)
+![Claude chaining multiple tools](https://raw.githubusercontent.com/poridhiEng/lab-asset/refs/heads/main/Agentic%20Engineering/Claude%20Code%20Best%20Practices/lab_1/images/4.png)
 
 ## Claude Code in Action
 
@@ -136,13 +136,13 @@ What does this project do? Explore the directory structure and key files.
 Don't interrupt — let Claude work. Watch the terminal and count the tool calls. Claude will use Glob to scan directories, Read to examine files it finds interesting, maybe Grep to search for patterns. Each step is a decision based on what it learned in the previous step.
 
 <!-- Poridhi screenshot: Claude exploring the project — showing sequential Glob/Read calls as it discovers and reads files -->
-![Claude exploring the project](./images/5.png)
+![Claude exploring the project](https://raw.githubusercontent.com/poridhiEng/lab-asset/refs/heads/main/Agentic%20Engineering/Claude%20Code%20Best%20Practices/lab_1/images/5.png)
 
 ## How Claude Parallelizes Work
 
 When Claude needs information from multiple independent sources, it doesn't read them one at a time. It batches independent operations into parallel calls.
 
-![](./images/10.png)
+![](https://raw.githubusercontent.com/poridhiEng/lab-asset/refs/heads/main/Agentic%20Engineering/Claude%20Code%20Best%20Practices/lab_1/images/10.png)
 
 Here's the difference in practice. When you ask vaguely, Claude has to search first, then read what it finds — that's sequential work across multiple turns. When you're specific about which files to look at, Claude reads them all simultaneously in a single turn.
 
@@ -161,7 +161,7 @@ Read src/routes/weather.js and src/utils/formatter.js and explain how they work 
 Watch the terminal — you'll see Claude read both files at the same time (two Read calls with no gap between them). It knows both file paths from your prompt, so it reads them in parallel instead of one after the other.
 
 <!-- Poridhi screenshot: Two simultaneous Read calls for weather.js and formatter.js -->
-![Parallel file reads](./images/6.png)
+![Parallel file reads](https://raw.githubusercontent.com/poridhiEng/lab-asset/refs/heads/main/Agentic%20Engineering/Claude%20Code%20Best%20Practices/lab_1/images/6.png)
 
 ## Three Model Tiers
 
@@ -191,7 +191,7 @@ In your Claude session, type:
 
 You'll see a menu like this:
 
-![](./images/7.png)
+![](https://raw.githubusercontent.com/poridhiEng/lab-asset/refs/heads/main/Agentic%20Engineering/Claude%20Code%20Best%20Practices/lab_1/images/7.png)
 
 The default is Sonnet. For the Poridhi lab environment with limited tokens, stick with **minimax/minimax**.
 
@@ -243,8 +243,8 @@ How would you add a new city "paris" to the weather API?
 Watch how Claude explores the codebase — reading the route files, the coordinates utility, the tests — but doesn't write any code. It presents a plan instead. This is the explore-first approach that saves context on complex tasks.
 
 <!-- Poridhi screenshot: Claude in plan mode — exploring files and presenting a plan without making changes -->
-![Plan mode in action](./images/8.png)
-![Plan mode in action](./images/9.png)
+![Plan mode in action](https://raw.githubusercontent.com/poridhiEng/lab-asset/refs/heads/main/Agentic%20Engineering/Claude%20Code%20Best%20Practices/lab_1/images/8.png)
+![Plan mode in action](https://raw.githubusercontent.com/poridhiEng/lab-asset/refs/heads/main/Agentic%20Engineering/Claude%20Code%20Best%20Practices/lab_1/images/9.png)
 
 ## Key Takeaways
 
