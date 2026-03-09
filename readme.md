@@ -22,10 +22,11 @@ git clone https://github.com/poridhioss/claude-code-best-practices-url-shortner-
 
 | Module | Title | Topics | Project |
 |--------|-------|--------|---------|
-| [Module 1](module_1/readme.md) | Introduction | Coding assistants, tool use, agentic loop, parallelization, model tiers, plan mode | Starter |
-| [Module 2](module_2/readme.md) | Getting Started | Installation, CLAUDE.md, context management, custom commands, MCP servers, GitHub | Starter |
-| [Module 3](module_3/readme.md) | Hooks & SDK | Hook events, defining and implementing hooks, decision control, headless mode, CI/CD | Starter |
-| [Module 4](module_4/readme.md) | Agents & Skills | Skills, agent isolation, frontmatter configuration, orchestration patterns | Starter |
-| [Module 5](module_5/readme.md) | Skills, Agents & Orchestration — The Real Project | Skills preloading, agent isolation, command pipelines, token efficiency | URL Shortener |
+| [Lab 1](module_1/readme.md) | Introduction | Coding assistants, tool use, agentic loop, parallelization, model tiers, plan mode | Starter |
+| [Lab 2](module_2/readme.md) | Getting Started | Installation, CLAUDE.md, context management, custom commands, MCP servers, GitHub | Starter |
+| [Lab 3](module_3/readme.md) | Hooks & SDK | Hook events, defining and implementing hooks, decision control, headless mode, CI/CD | Starter |
+| [Lab 4](module_4/readme.md) | Agents & Skills | Skills, agent isolation, frontmatter configuration, orchestration patterns | Starter |
+| [Lab 5](module_5/readme.md) | Skills, Agents & Orchestration — The Real Project | Skills preloading, agent isolation, command pipelines, token efficiency | URL Shortener |
+| [Lab 6](pending) | | | |
 
 
